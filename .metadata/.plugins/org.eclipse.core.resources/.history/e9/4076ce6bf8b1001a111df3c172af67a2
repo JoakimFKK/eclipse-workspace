@@ -1,0 +1,38 @@
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.JButton;
+
+public class SecretMessagesGUI extends JFrame {
+	private JTextArea txtIn;
+	private JTextArea txtOut;
+	
+	private JTextField txtKey;
+	public SecretMessagesGUI() {
+		setTitle("Secret Message App");
+		getContentPane().setLayout(null);
+		
+		txtOut = new JTextArea();
+		txtOut.setBounds(10, 210, 564, 140);
+		getContentPane().add(txtOut);
+		
+		txtIn = new JTextArea();
+		txtIn.setBounds(10, 11, 564, 140);
+		getContentPane().add(txtIn);
+		
+		txtKey = new JTextField();
+		txtKey.setHorizontalAlignment(SwingConstants.RIGHT);
+		txtKey.setBounds(10, 172, 43, 20);
+		getContentPane().add(txtKey);
+		txtKey.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Encode/Decode");
+		btnNewButton.setBounds(63, 171, 115, 23);
+		getContentPane().add(btnNewButton);
+	}
+
+	public static void main(String[] args) {
+		
+	}
+}

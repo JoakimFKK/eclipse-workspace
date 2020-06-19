@@ -1,0 +1,53 @@
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
+public class GuessingGame extends JFrame {
+	private JTextField textField;
+	public GuessingGame() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Hi-Lo Guessing Game");
+		getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Hi-Lo Guessing Game");
+		lblNewLabel.setForeground(Color.GREEN);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		lblNewLabel.setBounds(10, 11, 414, 35);
+		getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Guess a number between 1 and 100:");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		lblNewLabel_1.setBounds(10, 71, 290, 27);
+		getContentPane().add(lblNewLabel_1);
+		
+		textField = new JTextField();
+		textField.setHorizontalAlignment(SwingConstants.RIGHT);
+		textField.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		textField.setBounds(307, 70, 38, 29);
+		getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Guess!");
+		btnNewButton.setBackground(Color.BLACK);
+		btnNewButton.setForeground(Color.GREEN);
+		btnNewButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 26));
+		btnNewButton.setBounds(118, 123, 198, 56);
+		getContentPane().add(btnNewButton);
+		
+		JLabel lblNewLabel_2 = new JLabel("Write a number, and press \"Guess!\"");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setBounds(10, 204, 414, 14);
+		getContentPane().add(lblNewLabel_2);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+}

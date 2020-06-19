@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class SecretMessages {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter a message to encode or decode:");
+		String message = scan.nextLine();
+		String output = "";
+		System.out.println("Enter a secret key (-25 to 25): ");
+		while (true) {			
+			try {
+				int keyVal = Integer.parseInt(scan.nextLine());
+				if (keyVal >= -25 && keyVal <= 25) {
+					char key = (char) keyVal;
+					break;
+				}
+			} catch (Exception e) {
+				System.out.println("Invalid input, try again:");
+			}
+		}
+		// char key = 13;  // Decryption key
+		
+		for (int i = 0; i < message.length(); i++) {
+			char input = message.charAt(i);
+			message.indexOf(i);
+//			if ((input >= 'A' && input <= 'Z') || (input >= 'a' && input <= 'z')) {
+			if (input >= 'A' && input <= 'Z') {
+				input += key;
+				if (input > 'Z' )
+					input -= 26;  // 26 letters in the English alphabet.
+			}
+			else if (input >= 'a' && input <= 'z') {
+				input += key;
+				if (input > 'z')
+					input -= 26;
+			}
+			output += input;
+		}
+		System.out.println(output);
+
+		scan.close();
+	}
+}

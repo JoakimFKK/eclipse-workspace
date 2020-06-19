@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class SecretMessages {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter a message to encode or decode:");
+		String message = scan.nextLine();
+		String output = "";
+		char key = 13;  // Decryption key
+		
+		for (int i = 0; i < message.length(); i++) {
+			char input = message.charAt(i);
+			message.indexOf(i);
+//			if ((input >= 'A' && input <= 'Z') || (input >= 'a' && input <= 'z')) {
+			if (input >= 'A' && input <= 'Z') {
+				input += key;
+				if (input > 'Z' )
+			}
+			output += (char)(message.charAt(i) + key);
+		}
+		System.out.println(output);
+
+		scan.close();
+	}
+}

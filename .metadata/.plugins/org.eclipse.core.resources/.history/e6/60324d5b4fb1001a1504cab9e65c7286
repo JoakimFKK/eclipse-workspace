@@ -1,0 +1,9 @@
+import java.util.Scanner;
+
+public class SecretMessages {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter a message to encode or decode:");
+		String message = scan.nextLine();
+	}
+}

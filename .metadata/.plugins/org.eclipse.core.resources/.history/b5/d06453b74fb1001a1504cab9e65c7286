@@ -1,0 +1,14 @@
+import java.util.Scanner;
+
+public class SecretMessages {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter a message to encode or decode:");
+		String message = scan.nextLine();
+		String output = "";
+		
+		for (int i = message.length() - 1; i >= 0; i--) {
+			output += message.charAt(i);
+		}
+	}
+}
