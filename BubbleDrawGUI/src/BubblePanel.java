@@ -1,11 +1,14 @@
 import java.awt.event.*;
 import javax.swing.Timer;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 import java.util.ArrayList;
 import java.util.Random;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JButton;
+import javax.swing.JSlider;
 
 public class BubblePanel extends JPanel {
     Random rand = new Random();
@@ -13,11 +16,28 @@ public class BubblePanel extends JPanel {
     int size = 25;
     Timer timer;
     int delay = 33;  // miliseconds
+    JSlider slSpeed;
 
     public BubblePanel() {
         timer = new Timer(delay, new BubbleListener());
         bubbleList = new ArrayList<Bubble>();
         setBackground(Color.BLACK);
+
+        slSpeed = new JSlider();
+
+        slSpeed.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent arg0) {
+                timer.setDelay(1000 / (slSpeed.getValue() + 1));
+            }
+        });
+
+        slSpeed.setPaintTicks(true);
+        slSpeed.setPaintLabels(true);
+        slSpeed.setValue(5);
+        slSpeed.setMajorTickSpacing(20);
+        slSpeed.setMinorTickSpacing(5);
+        slSpeed.setMaximum(120);
+        add(slSpeed);
 
         JPanel panel = new JPanel();
         add(panel);
@@ -133,6 +153,12 @@ public class BubblePanel extends JPanel {
         public void update() {
             x += xspeed;
             y += yspeed;
+            /// Checks to see if obj reached the edge of the screen
+            // (0,0) er i midten, så vi fjerner halvdelen af cirklen for at kigge på toppen, og tilføjer for at kigge på bunden.
+            if (x - size / 2 <= 0 || x + size / 2 >= getWidth())
+                xspeed = -xspeed;
+            if (y - size / 2 <= 0 || y + size / 2 >= getHeight())
+                yspeed = -yspeed;
         }
     }
 }
