@@ -25,7 +25,7 @@ public class BubbleView extends ImageView implements View.OnTouchListener {
         super(context, attributeSet);
         bubbleList = new ArrayList<Bubble>();
         // testBubbles();
-        setOnTouchListener(this);
+        setOnTouchListener(this);  // Sætter en TouchListener til dette element
     }
 
     private Runnable r = new Runnable() {
@@ -41,7 +41,7 @@ public class BubbleView extends ImageView implements View.OnTouchListener {
         for (Bubble b : bubbleList) {
             b.draw(canvas);
         }
-        h.postDelayed(r, delay);
+        h.postDelayed(r, delay); // Threading
     }
 
     public void testBubbles() {
@@ -58,7 +58,11 @@ public class BubbleView extends ImageView implements View.OnTouchListener {
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         for (int i = 0; i < motionEvent.getPointerCount(); i++) {
-            bubbleList.add(new Bubble((int)motionEvent.getX(), (int)motionEvent.getY(), (rand.nextInt(size) + size)));
+            bubbleList.add(new Bubble(
+                    (int)motionEvent.getX(),
+                    (int)motionEvent.getY(),
+                    (rand.nextInt(size) + size)
+            ));
         }
         return true;
     }
